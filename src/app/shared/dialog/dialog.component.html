@@ -1,0 +1,26 @@
+<h2 *ngIf="!isChange" mat-dialog-title>Novo Cliente</h2>
+<h2 *ngIf="isChange" mat-dialog-title>Editar Cliente</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nome" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>CPF</mat-label>
+    <input matInput [(ngModel)]="data.cpf" maxlength="14" (keyup)="validaCPF()" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Data</mat-label>
+    <input type="date" matInput [(ngModel)]="data.datacad" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Renda</mat-label>
+    <input type="number" matInput [(ngModel)]="data.renda" required>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Cadastrar</button>
+  <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Editar</button>
+</mat-dialog-actions>
+
